@@ -12,8 +12,11 @@ provider "aws" {
   region = "us-east-1"
 }
 
+resource "random_uuid" "test" {
+}
+
 resource "aws_s3_bucket" "qweqwe" {
-  bucket = "my-tf-test-bucket-${random_string.random_suffix.result}"
+  bucket = "my-tf-test-bucket-${random_uuid.test.result}"
 
   tags = {
     Name        = "My bucket"
